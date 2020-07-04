@@ -1,4 +1,4 @@
-package ex
+package ex.chapter03
 
 fun main(args: Array<String>) {
 
