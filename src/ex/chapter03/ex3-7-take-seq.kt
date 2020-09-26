@@ -1,7 +1,7 @@
 package ex.chapter03
 
 fun main() {
-print(takeSequence(5, repeat(3)))
+    print(takeSequence(5, repeat(3)))
 }
 
 fun takeSequence(n: Int, sequence: Sequence<Int>): List<Int> = when {
@@ -18,10 +18,10 @@ operator fun <T> Sequence<T>.plus(other: () -> Sequence<T>) = object : Sequence<
     private val otherIterator: Iterator<T> by lazy { other().iterator() }
     override fun iterator() = object : Iterator<T> {
         override fun next(): T =
-            if (thisIterator.hasNext())
-                thisIterator.next()
-            else
-                otherIterator.next()
+                if (thisIterator.hasNext())
+                    thisIterator.next()
+                else
+                    otherIterator.next()
 
         override fun hasNext(): Boolean = thisIterator.hasNext() || otherIterator.hasNext()
     }

@@ -4,6 +4,7 @@ fun main() {
 
     println(factorial(5))
 }
+
 var memo = Array(100) { -1 }
 
 fun factorial(n: Int): Int = when {
