@@ -13,8 +13,10 @@ class PartialFunction<P, R>(
     fun isDefinedAt(p: P): Boolean = condition(p)
 
     fun invokeOrElse(p: P, default: R): R = if (isDefinedAt(p)) invoke(p) else default
+
     fun orElse(that: PartialFunction<P, R>): PartialFunction<P, R> =
-            PartialFunction({ it: P -> this.isDefinedAt(it) || that.isDefinedAt(it) },
+            PartialFunction(
+                    { it: P -> this.isDefinedAt(it) || that.isDefinedAt(it) },
                     { it: P ->
                         when {
                             this.isDefinedAt(it) -> this(it)
