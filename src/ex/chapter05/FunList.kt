@@ -16,10 +16,12 @@ tailrec fun <T> FunList<T>.appendTail(value: T, acc: FunList<T> = FunList.Nil): 
     FunList.Nil -> FunList.Cons(value, acc).reverse()
     is FunList.Cons -> tail.appendTail(value, acc)
 }
+
 tailrec fun <T> FunList<T>.reverse(acc: FunList<T> = FunList.Nil): FunList<T> = when (this) {
     FunList.Nil -> acc
     is FunList.Cons -> tail.reverse(acc.addHead(head))
 }
+
 fun <T> FunList<T>.addHead(head: T): FunList<T> = FunList.Cons(head, this)
 
 fun <T> FunList<T>.getTail(): FunList<T> = when (this) {
